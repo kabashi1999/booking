@@ -18,7 +18,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({limit:'10mb', extended:false}))
 
 const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL,{useUnifiedTopology: true,useNewUrlParser:true})
+mongoose.connect(process.env.DATABASE_URL || 'mongodb+srv://user:<9192631770>@cluster0-nfsjz.mongodb.net/test?retryWrites=true&w=majority',{useUnifiedTopology: true,useNewUrlParser:true})
 const db = mongoose.connection
 db.on('error', erroe => console.error('error'))
 db.once('open',()=> console.log('connected to mongoose'))
